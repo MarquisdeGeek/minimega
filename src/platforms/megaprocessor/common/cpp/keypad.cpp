@@ -1,8 +1,8 @@
-#include "SDL/SDL.h"
 #include "emf/emf.h"
 #include "platforms/megaprocessor/common/cpp/memory.h"
 
 #include "keypad.h"
+#include "keycodes.h"
 #include "io.h"
 #include <string>
 #include <unordered_map>
@@ -22,10 +22,10 @@ void mega_keypad_onUp(uint8_t key) {
 
 
 static std::unordered_map<int, uint16_t> keyCodes = {
-  { 82,  0x0001 }, // IO_SWITCH_FLAG_UP
-  { 81,  0x0002 }, // IO_SWITCH_FLAG_DOWN
-  { 80,  0x0004 }, // IO_SWITCH_FLAG_LEFT
-  { 79,  0x0008 }, // IO_SWITCH_FLAG_RIGHT
+  { SDLK_UP,  0x0001 }, // IO_SWITCH_FLAG_UP
+  { SDLK_DOWN,  0x0002 }, // IO_SWITCH_FLAG_DOWN
+  { SDLK_LEFT,  0x0004 }, // IO_SWITCH_FLAG_LEFT
+  { SDLK_RIGHT,  0x0008 }, // IO_SWITCH_FLAG_RIGHT
   { SDLK_a,  0x0010 }, // IO_SWITCH_FLAG_SQUARE (A)
   { SDLK_w,  0x0020 }, // IO_SWITCH_FLAG_TRIANGLE (W)
   { SDLK_s,  0x0040 }, // IO_SWITCH_FLAG_CIRCLE (S)

@@ -11,14 +11,14 @@
 #include "emulator/megaprocessor/cpp/megaprocessor_emulator.cpp" // YEAH YEAH - I KNOW!
 #include "emulator/megaprocessor/cpp/megaprocessor_emulator.h"
 
-megaprocessor_clock_cpu zx_clock;
+megaprocessor_clock_cpu mega_clock;
 megaprocessor_emulator mega_emu;
 
 
 void mega_start() {
 
     mega_emu.start();
-    zx_clock.setRate(150);
+    mega_clock.setRate(9200);
 
     loadPremixedCode();
 
@@ -30,14 +30,19 @@ void mega_start() {
 }
 
 
-void mega_update() {
-    uint32_t totalCycles = zx_clock.getFrequency();
+void mega_update(int fps) {
+    uint32_t totalCycles = mega_clock.getFrequency();
     uint32_t cycles = 0;
-    // MegaState state;
+
+    totalCycles /= fps;
 
     do {
-        // mega_emu.getState(&state);
+#if 0
+        MegaState state;
+        mega_emu.getState(&state);
         // printf("%d (%d) : r0=%d r1=%d r2=%d r3=%d sp=%d ix=%d iy=%d\n", state.pc, read8(state.pc), state.r0, state.r1, state.r2, state.r3, state.sp, state.ix, state.iy);
+        printf("%x (%x) : r0=%x r1=%x r2=%x r3=%x sp=%x ix=%x iy=%x\n", state.pc, read8(state.pc), state.r0, state.r1, state.r2, state.r3, state.sp, state.ix, state.iy);
+#endif
         cycles += mega_emu.step();
     } while(cycles < totalCycles);
     

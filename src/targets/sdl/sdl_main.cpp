@@ -7,25 +7,19 @@
 
 #include "platforms/megaprocessor/common/cpp/keypad.h"
 #include "platforms/megaprocessor/common/cpp/mega_update.h"
-// #include "targets/common/cpp/click_interface.h"
 
-// //cpp
-// #include "platforms/zx81/common/cpp/zxkeyboard.h"
-
-// // c
-// #include "platforms/zx81/common/c/zxckeyboard.h"
 
 void onKeyDown(int keycode);
 void onKeyUp(int keycode);
 
-
+const int fps = 60;
 bool gUpdateScreen = true;
 // ClickInterface clicker;
 
 
 // On timer
 Uint32 update(Uint32 interval, void *param) {
-    mega_update();
+    mega_update(fps);
     return interval;
 }
 
@@ -80,7 +74,6 @@ int main(int argc, char* argv[])
 
     mega_start();
 
-    int fps = 50;
     SDL_AddTimer(1000/fps, update, pixels);
 
     bool running = true;
@@ -135,28 +128,23 @@ int main(int argc, char* argv[])
         }
 
  
-        megascreen.draw(renderer);
-           //
+        if (gUpdateScreen) {
             gUpdateScreen = false;
 
+            megascreen.draw(renderer);
+            //
             SDL_RenderPresent(renderer);
-        // copy to window
-        // SDL_BlitSurface(pixels, NULL, screen, NULL);
-        // SDL_UpdateWindowSurface(window);
+        }
     }
-
 }
 
 
 // Essentially global callbacks...
-extern "C" {
-void memory_trap8(uint16_t addr, uint8_t data) {
-    gUpdateScreen = true;
-}
-}
 
 void memory_trap8cpp(uint16_t addr, uint8_t data) {
-    gUpdateScreen = true;
+    if (addr >= 0xA000 && addr < 0xA100) {
+        gUpdateScreen = true;
+    }
 }
 
 

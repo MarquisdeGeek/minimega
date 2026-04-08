@@ -3,7 +3,7 @@
 
 
 void mega_start();
-void mega_update();
+void mega_update(int fps);
 void mega_trapVector1();
 void mega_end();
 

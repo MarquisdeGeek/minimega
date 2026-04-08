@@ -1,3 +1,6 @@
+#if MEGA_PREMIX_FONTTEST
+#include "emf/emf.h"
+
 void filldata(uint8_t* ram) {
 ram[0] = 243;
  ram[1] = 16;
@@ -1792,3 +1795,5 @@ ram[18100] = 243;
 ram[18101] = 0;
 ram[18102] = 64;
 }
+
+#endif

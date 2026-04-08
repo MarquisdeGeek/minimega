@@ -1,3 +1,5 @@
+#if MEGA_PREMIX_MONALISA
+#include "emf/emf.h"
 
 void filldata(uint8_t* ram) {
 
@@ -2232,3 +2234,4 @@ ram[18374] = 243;
 ram[18375] = 0;
 ram[18376] = 64;
 }
+#endif

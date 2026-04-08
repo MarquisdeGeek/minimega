@@ -60,6 +60,7 @@ PUBLIC
 EMF_INC_EMU_CPP=1
 )
 
+# Premix software with the emulator
 target_compile_definitions(${TARGET_NAME}
 PUBLIC
 MEGA_PREMIX_SNAKE=0
@@ -68,9 +69,11 @@ MEGA_PREMIX_TETRIS=1
 
 target_sources (${TARGET_NAME}
     PUBLIC
-    # ${EMF_ROOT}/targets/common/cpp/click_interface.cpp
-    # ${EMF_ROOT}/targets/common/cpp/screen.cpp
-    # ${EMF_ROOT}/targets/sdl/mega_keys.cpp
     ${EMF_ROOT}/platforms/megaprocessor/common/cpp/premix_loader.cpp
+
+    ${EMF_ROOT}/platforms/megaprocessor/common/cpp/sw/fonttest.cpp
+    ${EMF_ROOT}/platforms/megaprocessor/common/cpp/sw/monalisa.cpp
+    ${EMF_ROOT}/platforms/megaprocessor/common/cpp/sw/snake.cpp
+    ${EMF_ROOT}/platforms/megaprocessor/common/cpp/sw/tetris.cpp
 )
 

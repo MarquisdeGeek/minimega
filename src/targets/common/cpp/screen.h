@@ -15,14 +15,17 @@ class ScreenPoint {
 public:
     int x, y;
 
+    ScreenPoint(): x(0), y(0) {}
     ScreenPoint(int x_, int y_) : x(x_), y(y_) {}
 };
 
 
-class ChessboardPoint {
+class ScreenRect {
 public:
     int x, y;
+    int w, h;
 };
+
 
 
 class CommonScreen {
@@ -39,31 +42,23 @@ public:
     virtual int getHeight() const;
 
     virtual void getOffset(ScreenPoint* pOffset, int position) const;
-    virtual bool getSquareAt(ChessboardPoint* pChessboard, int x, int y) const;
 
     virtual void clearBackground(ScreenPoint* pOffset);
-    virtual void drawC(ScreenPoint* pOffset);
-    virtual void drawCPP(ScreenPoint* pOffset);
 
 protected:
     BaseRender* m_pRenderer;
 
     int  m_Scale;
     bool m_bShowComparison;
-    int  m_ifaceWidth; // size of total chess board and collateral
-    int  m_ifaceHeight; // size of total chess board and collateral
-    int  m_gapX; // space around each board
-    int  m_gapY; // space around each board
+    int  m_ifaceWidth; // size of total interactive area
+    int  m_ifaceHeight; // size of total interactive area
+    int  m_gapX; // space around each display
+    int  m_gapY; // space around each display
 
     const int m_fontWidth = 8;
     const int m_fontHeight = 8;
 
-    typedef uint8_t (*cbRead8)(uint16_t a);
-    typedef uint16_t (*cbRead16)(uint16_t a);
 
-    virtual void  drawScreen(ScreenPoint* pOffset, cbRead8 r8, cbRead16 r16);
-    virtual void  drawCharacterRects(ScreenPoint* pOffset, int screenX, int screenY, int ch);
-    virtual void  clearRestOfLine(ScreenPoint* pOffset, int screenX, int screenY);
 };
 
 

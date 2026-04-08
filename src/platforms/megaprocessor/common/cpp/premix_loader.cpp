@@ -6,17 +6,13 @@
 // /home/steev/work/svn/clients/self/code/native/emf/targets/megaprocessor_ecma6/framework
 // to extract the imported data
 
-#if MEGA_PREMIX_TETRIS
-#include "sw/tetris.cpp"
-#elif MEGA_PREMIX_SNAKE
-#include "sw/snake.cpp"
-#endif
 
-
-uint8_t ram[32768];
+static uint8_t ram[32768];
 
 
 void loadPremixedCode() {
+    extern void filldata(uint8_t* ram);
+
     filldata(ram);
 
     for(int i=0;i<sizeof(ram);++i) {

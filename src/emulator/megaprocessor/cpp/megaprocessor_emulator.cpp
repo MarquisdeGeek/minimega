@@ -199,11 +199,11 @@ void set(emfNumber<uint16_t>& r, int v) {
 	r.assign(v);
 }
 
-auto get(emfNumber<uint16_t>& r) {
+uint16_t get(emfNumber<uint16_t>& r) {
 	return r.getUnsigned();
 }
 
-auto reg(emfNumber<uint16_t>& r) {
+emfNumber<uint16_t>& reg(emfNumber<uint16_t>& r) {
 	return r;
 }
 

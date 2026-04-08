@@ -7,7 +7,7 @@ float period;
 uint32_t timecum;
 uint32_t uptimeTotal;
 megaprocessor_clock_cpu() {
-  setRate(150);
+  setRate(1500);
 reset();
 }
 void reset() {

@@ -11,13 +11,13 @@ megaprocessor_memory() {
 // enableBlock('peripheral_ram');
 }
 uint8_t ram[32768] = {
-{0}
+0
 };
 uint8_t screen_ram[256] = {
-{0}
+0
 };
 uint8_t peripheral_ram[256] = {
-{0}
+0
 };
 
 /*
@@ -88,11 +88,13 @@ return 0; // a bad default
 // read8
 
 void write8(uint16_t addr, uint8_t data) {
+  extern void memory_trap8cpp(uint16_t addr, uint8_t data);
+
   //  addr = addr.getUnsigned ? addr.getUnsigned() : addr;
   //  addr &= 0xffff;
   //  data = data.getUnsigned ? data.getUnsigned() : data;
   //  data &= 0xff;
-  // memory_trap8cpp(addr, data);
+  memory_trap8cpp(addr, data);
 
 if (addr >= 0 && addr < 32768) {
   //  if (watchList[addr]) {
