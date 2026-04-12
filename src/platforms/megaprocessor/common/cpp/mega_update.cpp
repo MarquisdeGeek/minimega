@@ -8,11 +8,10 @@
 
 #include "emulator/megaprocessor/cpp/clock_cpu.h"
 
-#include "emulator/megaprocessor/cpp/megaprocessor_emulator.cpp" // YEAH YEAH - I KNOW!
-#include "emulator/megaprocessor/cpp/megaprocessor_emulator.h"
+#include "emulator/megaprocessor/cpp/megaprocessor_cpu_emulator.cpp" // YEAH YEAH - I KNOW!
 
 megaprocessor_clock_cpu mega_clock;
-megaprocessor_emulator mega_emu;
+megaprocessor_cpu_emulator mega_emu;
 
 
 void mega_start() {

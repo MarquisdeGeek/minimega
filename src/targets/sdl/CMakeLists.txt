@@ -34,8 +34,6 @@ target_include_directories (${TARGET_NAME} PUBLIC
 
 target_sources (${TARGET_NAME}
 PUBLIC
-# ${EMF_ROOT}/targets/common/cpp/click_interface.cpp
-# ${EMF_ROOT}/targets/common/cpp/screen.cpp
 ${EMF_ROOT}/targets/sdl/sdl_main.cpp
 ${EMF_ROOT}/targets/sdl/sdl_screen.cpp
 ${EMF_ROOT}/targets/sdl/sdl_joypad.cpp
@@ -44,9 +42,6 @@ ${EMF_ROOT}/platforms/megaprocessor/common/cpp/memory.cpp
 ${EMF_ROOT}/platforms/megaprocessor/common/cpp/io.cpp
 ${EMF_ROOT}/platforms/megaprocessor/common/cpp/keypad.cpp
 ${EMF_ROOT}/platforms/megaprocessor/common/cpp/mega_update.cpp
-
-
-# ${EMF_ROOT}/framework/comparator.c
 )
 
 target_link_libraries(${TARGET_NAME}
